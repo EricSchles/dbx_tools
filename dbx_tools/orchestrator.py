@@ -22,7 +22,7 @@ def delete_cluster(
     }
 
     response = requests.post(
-        f"{host}/api/2.1/jobs/create", headers=headers, json=parameters
+        f"{host}/api/2.1/clusters/delete", headers=headers, json=parameters
     )
     return response
 
