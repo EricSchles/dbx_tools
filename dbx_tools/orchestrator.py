@@ -2,6 +2,30 @@ from typing import List, Dict
 import requests
 import json
 
+def delete_cluster(
+        cluster_id: str,
+        host: str,
+        headers: dict,
+) -> requests.Response:
+    """
+
+    Original docs: https://docs.databricks.com/api/workspace/clusters/delete
+    
+    * cluster_id - the id of the cluster to delete
+    * host : str - the host IP Address
+
+    * headers: dict - the headers come from the config
+    and should not be changed
+    """
+    parameters = {
+        "cluster_id": cluster_id
+    }
+
+    response = requests.post(
+        f"{host}/api/2.1/jobs/create", headers=headers, json=parameters
+    )
+    return response
+
 def create_job(
     name: str,
     tasks: List[Dict],
